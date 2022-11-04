@@ -1,10 +1,14 @@
 <script setup>
 const props = defineProps(['hero'])
+function showBiography() {
+  alert('Hi')
+}
 </script>
 
 <template>
   <div grid class="card">
-    <HeroImage :image-url="hero.images.md" />
+    <HeroImage :image-url="hero.images.md" @showBiography="showBiography" />
+
     <HeroStats :name="hero.name" :stats="hero.powerstats" :alignment="hero.biography.alignment" />
   </div>
 </template>
