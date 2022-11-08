@@ -1,15 +1,14 @@
 <script setup>
 const props = defineProps(['hero'])
-function showBiography() {
-  alert('Hi')
-}
+const showBiography = ref(false)
 </script>
 
 <template>
   <div grid class="card">
-    <HeroImage :image-url="hero.images.md" @showBiography="showBiography" />
+    <HeroImage :image-url="hero.images.md" @showBiography="showBiography = true" />
 
     <HeroStats :name="hero.name" :stats="hero.powerstats" :alignment="hero.biography.alignment" />
+    <HeroModal v-if="showBiography" @hideBiography="showBiography = false" />
   </div>
 </template>
 
